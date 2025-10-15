@@ -28,6 +28,10 @@ public class Course {
         this.name = name;
     }
     
+    public Long getId(){
+        return idCourse;
+    }
+    
     public String getName(){
         return name;
     }

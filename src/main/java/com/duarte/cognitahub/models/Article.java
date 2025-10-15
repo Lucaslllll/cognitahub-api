@@ -19,6 +19,7 @@ import java.time.LocalDate;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idArticles")
     private Long idArticles;
     
     @Column(unique=true, nullable=false)
