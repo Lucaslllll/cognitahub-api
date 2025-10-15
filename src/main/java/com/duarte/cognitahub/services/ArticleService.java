@@ -40,7 +40,7 @@ public class ArticleService {
         
         
         Article article = articleRepository.findById(idArticle)
-                .orElseThrow(() -> new RuntimeException("Profile not found for user ID: " + idArticle));
+                .orElseThrow(() -> new RuntimeException("Article not found for user ID: " + idArticle));
         
         
         return article;

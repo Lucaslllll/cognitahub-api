@@ -4,9 +4,11 @@
  */
 package com.duarte.cognitahub.services;
 
+import com.duarte.cognitahub.DTO.TopicDTO;
 import com.duarte.cognitahub.models.Topic;
 import com.duarte.cognitahub.repositories.TopicRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,4 +29,23 @@ public class TopicService {
         return topicRepository.findAll();
     }
     
+    public List<TopicDTO> getTopicsDTO(){
+        return topicRepository.findAll()
+                             .stream()
+                             .map(topic -> new TopicDTO(
+                                     topic.getName(), 
+                                     topic.getDetails(), 
+                                     topic.getDate().toString(),
+                                     topic.getAuthor().getId()
+                                    )
+                             )
+                             .collect(Collectors.toList());
+        
+    }
+    
+    
+    public Topic saveTopic(Topic topic){
+        
+        return topicRepository.save(topic);
+    }
 }

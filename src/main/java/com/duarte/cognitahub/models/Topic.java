@@ -21,7 +21,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTopic;
     
-    @Column(unique=true, nullable=false)
+    @Column(nullable=false)
     private String name;
     
     private String details;

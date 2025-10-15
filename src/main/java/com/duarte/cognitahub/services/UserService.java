@@ -47,6 +47,18 @@ public class UserService{
         
     }
     
+    public User getUserById(Long idUser){
+        
+        
+        
+        User user = userRepository.findById(idUser)
+                .orElseThrow(() -> new RuntimeException("User not found for user ID: " + idUser));
+        
+        
+        return user;
+        
+    }
+    
     public Optional<User> searchByEmail(String email){
         return userRepository.findByEmail(email);
 //                .orElseThrow(() -> new ResourceNotFoundException("User Not Found with EMAIL: "+email+""));
