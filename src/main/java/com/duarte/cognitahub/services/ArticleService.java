@@ -4,6 +4,7 @@
  */
 package com.duarte.cognitahub.services;
 
+import com.duarte.cognitahub.exceptions.ResourceNotFoundException;
 import com.duarte.cognitahub.models.Article;
 import com.duarte.cognitahub.models.Course;
 import com.duarte.cognitahub.repositories.ArticleRepository;
@@ -40,7 +41,7 @@ public class ArticleService {
         
         
         Article article = articleRepository.findById(idArticle)
-                .orElseThrow(() -> new RuntimeException("Article not found for user ID: " + idArticle));
+                .orElseThrow(() -> new ResourceNotFoundException("Article not found for user ID: " + idArticle));
         
         
         return article;

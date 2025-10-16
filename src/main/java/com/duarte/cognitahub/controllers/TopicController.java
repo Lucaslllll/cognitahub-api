@@ -5,6 +5,7 @@
 package com.duarte.cognitahub.controllers;
 
 import com.duarte.cognitahub.DTO.TopicDTO;
+import com.duarte.cognitahub.models.Article;
 import com.duarte.cognitahub.models.Topic;
 import com.duarte.cognitahub.models.User;
 import com.duarte.cognitahub.services.TopicService;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,5 +60,13 @@ public class TopicController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
           
     }
+    
+    @GetMapping("/topic/{topicId}")
+    public ResponseEntity<TopicDTO> getOneTopic(@PathVariable("topicId") Long idTopic){
+        TopicDTO topic = topicService.getOneTopic(idTopic);
+        
+        return ResponseEntity.ok(topic);
+    }
+    
         
 }
