@@ -38,9 +38,7 @@ public class UserTask {
     @Column(name = "file_task_marked", length = 128)
     private String fileTaskMarked;
     
-    private Boolean isDelivered;
-    
-    private Boolean isMarked;
+    private Boolean isMarked = false;
     
     public UserTask() {}
     
@@ -50,13 +48,20 @@ public class UserTask {
         this.id = new UserTaskId(user.getId(), task.getId());
     }
     
-    public UserTask(User user, Task task, String fileTask, String fileTaskMarked, Boolean isDelivered, Boolean isMarked) {
+    public UserTask(User user, Task task, String fileTask) {
+        this.user = user;
+        this.task = task;
+        this.id = new UserTaskId(user.getId(), task.getId());
+        this.fileTask = fileTask;
+        
+    }
+    
+    public UserTask(User user, Task task, String fileTask, String fileTaskMarked, Boolean isMarked) {
         this.user = user;
         this.task = task;
         this.id = new UserTaskId(user.getId(), task.getId());
         this.fileTask = fileTask;
         this.fileTaskMarked = fileTaskMarked;
-        this.isDelivered = isDelivered;
         this.isMarked = isMarked;
     }  
 
@@ -102,13 +107,6 @@ public class UserTask {
         this.fileTaskMarked = fileTaskMarked;
     }
 
-    public Boolean getIsDelivered() {
-        return isDelivered;
-    }
-
-    public void setIsDelivered(Boolean isDelivered) {
-        this.isDelivered = isDelivered;
-    }
 
     public Boolean getIsMarked() {
         return isMarked;

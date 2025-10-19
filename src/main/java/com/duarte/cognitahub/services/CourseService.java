@@ -4,6 +4,7 @@
  */
 package com.duarte.cognitahub.services;
 
+import com.duarte.cognitahub.exceptions.ResourceNotFoundException;
 import com.duarte.cognitahub.models.Course;
 import com.duarte.cognitahub.repositories.CourseRepository;
 import java.util.List;
@@ -22,5 +23,17 @@ public class CourseService {
     
     public List<Course> getCourses(){
         return courseRepository.findAll();
+    }
+    
+    public Course getOneCourse(Long idCourse){
+        
+        
+        
+        Course course = courseRepository.findById(idCourse)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found for ID: " + idCourse));
+        
+        
+        return course;
+        
     }
 }
