@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Course")
 public class Course {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCourse;
@@ -22,14 +22,31 @@ public class Course {
     @Column(unique=true, nullable=false)
     private String name;
     
+    private String thumb;
+    
     public Course(){}
     
     public Course(String name){
         this.name = name;
     }
     
+    public Course(String name, String thumb){
+        this.name = name;
+        this.thumb = thumb;
+        
+    }
+    
     public Long getId(){
         return idCourse;
+    }
+    
+    
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
     
     public String getName(){

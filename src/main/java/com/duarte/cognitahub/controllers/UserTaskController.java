@@ -100,4 +100,15 @@ public class UserTaskController {
         
     }
 
+    @GetMapping("/user/{userId}/task/{taskId}")
+    public ListUserTaskDTO getOneUserTask(
+            @PathVariable("userId") Long idUser, 
+            @PathVariable("taskId") Long idTask ){
+    
+        User user = userService.getUserById(idUser);
+        Task task = taskService.getTaskById(idTask);
+        
+        
+        return userTaskService.getOneUserTaskByIds(user, task);
+    }
 }

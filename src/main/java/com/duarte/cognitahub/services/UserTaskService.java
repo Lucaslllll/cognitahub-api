@@ -6,6 +6,8 @@ package com.duarte.cognitahub.services;
 
 import com.duarte.cognitahub.DTO.UserTask.CreateUserTaskDTO;
 import com.duarte.cognitahub.DTO.UserTask.ListUserTaskDTO;
+import com.duarte.cognitahub.exceptions.ResourceNotFoundException;
+import com.duarte.cognitahub.models.Task;
 import com.duarte.cognitahub.models.User;
 import com.duarte.cognitahub.models.UserTask;
 import com.duarte.cognitahub.repositories.UserRepository;
@@ -56,5 +58,25 @@ public class UserTaskService {
                                .collect(Collectors.toList());
     
     }
+    
+  
+   
+    
+    public ListUserTaskDTO getOneUserTaskByIds(User user, Task task){
+        
+        ListUserTaskDTO userTaskDTO = this.userTaskRepository.findByUserAndTask(user, task)
+                .map(user_task -> new ListUserTaskDTO(
+                        user_task
+                    )
+                )
+                .orElseThrow(
+                   () -> new ResourceNotFoundException("UserTask not Found with task and user")
+   
+                );
+        
+        
+        
+        return userTaskDTO;
+    };
     
 }
