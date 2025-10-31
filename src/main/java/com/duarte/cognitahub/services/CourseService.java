@@ -4,10 +4,12 @@
  */
 package com.duarte.cognitahub.services;
 
+import com.duarte.cognitahub.DTO.CourseAllDTO;
 import com.duarte.cognitahub.exceptions.ResourceNotFoundException;
 import com.duarte.cognitahub.models.Course;
 import com.duarte.cognitahub.repositories.CourseRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 /**
  *
@@ -23,6 +25,19 @@ public class CourseService {
     
     public List<Course> getCourses(){
         return courseRepository.findAll();
+    }
+    
+    public List<CourseAllDTO> getCoursesDTO(){
+        return courseRepository.findAll()
+                             .stream()
+                             .map(course -> new CourseAllDTO(
+                                     course.getId(),
+                                     course.getName(),
+                                     course.getThumb()
+                                    )
+                             )
+                             .collect(Collectors.toList());
+    
     }
     
     public Course getOneCourse(Long idCourse){

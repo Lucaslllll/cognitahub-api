@@ -4,6 +4,7 @@
  */
 package com.duarte.cognitahub.controllers;
 
+import com.duarte.cognitahub.DTO.CourseAllDTO;
 import com.duarte.cognitahub.models.Course;
 import com.duarte.cognitahub.services.CourseService;
 import java.util.List;
@@ -26,7 +27,7 @@ public class CourseController {
     }
     
     @GetMapping("/courses")
-    public List<Course> coursesAll(){
-        return courseService.getCourses();
+    public List<CourseAllDTO> coursesAll(){
+        return courseService.getCoursesDTO();
     }
 }

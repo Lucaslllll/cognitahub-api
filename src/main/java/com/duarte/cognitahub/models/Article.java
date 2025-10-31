@@ -25,6 +25,7 @@ public class Article {
     @Column(unique=true, nullable=false)
     private String title;
     
+    @Column(columnDefinition = "TEXT")
     private String details;
     
     private LocalDate date;

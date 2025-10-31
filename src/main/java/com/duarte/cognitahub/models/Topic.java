@@ -24,6 +24,7 @@ public class Topic {
     @Column(nullable=false)
     private String name;
     
+    @Column(columnDefinition = "TEXT")
     private String details;
     
     private LocalDate date;

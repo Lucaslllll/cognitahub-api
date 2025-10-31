@@ -25,7 +25,10 @@ public class Task {
     @Column(unique=true, nullable=false)
     private String name;
     
+    @Column(columnDefinition = "TEXT")
     private String details;
+    
+    private String downloadFile;
     
     @JsonFormat(pattern="dd-MM-yyyy")
     private LocalDate created_at;
@@ -37,11 +40,12 @@ public class Task {
     
     public Task(){}
     
-    public Task(String name, String details, LocalDate created_at, Course course){
+    public Task(String name, String details, LocalDate created_at, Course course, String downloadFile){
         this.name = name;
         this.details = details;
         this.created_at = created_at;
         this.course = course;
+        this.downloadFile = downloadFile;
     }
 
     public Long getId(){
@@ -78,6 +82,14 @@ public class Task {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public String getDownloadFile() {
+        return downloadFile;
+    }
+
+    public void setDownloadFile(String downloadFile) {
+        this.downloadFile = downloadFile;
     }
     
 }

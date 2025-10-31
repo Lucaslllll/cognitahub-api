@@ -15,6 +15,7 @@ public class TaskDTO {
     private String name;
     private String details;
     private String created_at;
+    private String download_file;
     private CourseDTO course;
 
     public TaskDTO(Task task) {
@@ -23,6 +24,7 @@ public class TaskDTO {
         this.details = task.getDetails();
         this.created_at = task.getCreated_at().toString();
         this.course = new CourseDTO(task.getCourse());
+        this.download_file = task.getDownloadFile();
     }
 
     public Long getId() {
