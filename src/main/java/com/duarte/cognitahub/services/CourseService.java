@@ -10,6 +10,7 @@ import com.duarte.cognitahub.models.Course;
 import com.duarte.cognitahub.repositories.CourseRepository;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 /**
  *
@@ -28,7 +29,7 @@ public class CourseService {
     }
     
     public List<CourseAllDTO> getCoursesDTO(){
-        return courseRepository.findAll()
+        return courseRepository.findAll(Sort.by(Sort.Direction.ASC, "idCourse"))
                              .stream()
                              .map(course -> new CourseAllDTO(
                                      course.getId(),

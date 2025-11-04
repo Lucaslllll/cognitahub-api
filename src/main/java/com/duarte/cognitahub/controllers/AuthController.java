@@ -4,17 +4,24 @@
  */
 package com.duarte.cognitahub.controllers;
 
+import com.duarte.cognitahub.DTO.UserIdDTO;
 import com.duarte.cognitahub.models.User;
 import com.duarte.cognitahub.security.JwtUtil;
 import com.duarte.cognitahub.services.UserService;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import static org.springframework.http.ResponseEntity.status;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  *
@@ -26,6 +33,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     
     private final UserService userService;
+    
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     
     public AuthController(UserService userService){
         this.userService = userService;
@@ -43,13 +54,21 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> request){
         
+      
         Optional<User> user = userService.searchByEmail(request.get("email"));
+        
         
         if(user.isPresent()){
             
             String token = userService.login(request.get("email"), request.get("password"));
             
-            return ResponseEntity.ok(Map.of("token", token));
+            return ResponseEntity.ok(
+                    Map.of(
+                            "token", token,
+                             "user", user.get().getId()
+                    )
+            
+            );
         }
         
         return ResponseEntity.status(401).body("Invalid Credentials");
