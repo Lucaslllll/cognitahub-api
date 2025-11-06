@@ -4,18 +4,20 @@
  */
 package com.duarte.cognitahub.repositories;
 
+import com.duarte.cognitahub.models.MessageTopic;
 import com.duarte.cognitahub.models.Topic;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-
 
 /**
  *
  * @author Lucas
  */
-
 @Repository
-public interface TopicRepository extends JpaRepository<Topic, Long> {
+public interface MessageTopicRepository extends JpaRepository<MessageTopic, Long>{
 
+    List<MessageTopic> findByTopic(Topic topic);
+    
+    
 }

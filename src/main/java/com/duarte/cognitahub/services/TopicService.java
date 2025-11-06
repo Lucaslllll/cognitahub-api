@@ -51,6 +51,15 @@ public class TopicService {
         
         return topicRepository.save(topic);
     }
+    
+    public Topic getOneTopicPure(Long idTopic){
+        
+        Topic topic = topicRepository.findById(idTopic)
+                      .orElseThrow(() -> new ResourceNotFoundException("Topic not found for ID: " + idTopic));
+        
+        
+        return topic;
+    }
 
     public TopicDTO getOneTopic(Long idTopic) {
         TopicDTO topicSaved = topicRepository.findById(idTopic)
