@@ -36,6 +36,7 @@ public class TopicService {
         return topicRepository.findAll()
                              .stream()
                              .map(topic -> new TopicDTO(
+                                     topic.getIdTopic(),
                                      topic.getName(), 
                                      topic.getDetails(), 
                                      topic.getDate().toString(),
@@ -64,6 +65,7 @@ public class TopicService {
     public TopicDTO getOneTopic(Long idTopic) {
         TopicDTO topicSaved = topicRepository.findById(idTopic)
                 .map(topic -> new TopicDTO(
+                        topic.getIdTopic(),
                         topic.getName(),
                         topic.getDetails(),
                         topic.getDate().toString(),

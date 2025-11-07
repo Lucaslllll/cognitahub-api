@@ -9,12 +9,14 @@ package com.duarte.cognitahub.DTO;
  * @author Lucas
  */
 public class TopicDTO {
+    private Long id;
     private String name;
     private String details;
     private String date;
     private Long author;
 
-    public TopicDTO(String name, String details, String date, Long author){
+    public TopicDTO(Long id, String name, String details, String date, Long author){
+        this.id = id;
         this.name = name;
         this.details = details;
         this.date = date;
@@ -75,6 +77,14 @@ public class TopicDTO {
      */
     public void setAuthor(Long author) {
         this.author = author;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
 }
