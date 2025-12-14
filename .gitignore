@@ -31,3 +31,70 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Diretórios de compilação do Maven/Gradle
+target/
+build/
+
+# Diretórios específicos do IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.settings/
+.project
+.classpath
+
+# Arquivos de configuração do Eclipse
+*.launch
+
+# Arquivos de configuração do NetBeans
+nbproject/
+
+# Arquivos de configuração do Visual Studio Code
+.vscode/
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+
+# Dependências do Maven/Gradle
+/.mvn/
+.gradle/
+build.gradle
+pom.xml
+
+# Arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Diretórios de dependências do Maven/Gradle
+/.mvn/
+.gradle/
+
+# Arquivos de testes gerados
+*.test/
+*.spec/
+
+# Arquivos de configuração de testes
+test-classes/
+
+# Arquivos de compilação do Spring Boot
+spring-boot-devtools/
+
+
+# Ignorar arquivos de configuração do Spring Boot
+application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+

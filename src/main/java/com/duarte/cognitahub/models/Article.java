@@ -25,6 +25,8 @@ public class Article {
     @Column(unique=true, nullable=false)
     private String title;
     
+    private String preview;
+    
     @Column(columnDefinition = "TEXT")
     private String details;
     
@@ -77,6 +79,14 @@ public class Article {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public String getPreview() {
+        return preview;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
     }
     
    
